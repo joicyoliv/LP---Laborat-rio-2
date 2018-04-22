@@ -1,0 +1,51 @@
+Questão 02
+
+# No inicio do programa, antes de alguma função ser chamada, as variaveis armazenam os seguintes valores:
+	arg1 = 11
+	arg2 = 23
+
+# Com o auxílio do gdb, foram criado os seguintes pontos de parada:
+	Breakpoint 1 : break funcX
+	Breakpoint 2 : break funcY
+	Breakpoint 3 : break funcZ
+	Breakpoint 4 : break 32
+	Breakpoint 5 : break 33
+	Breakpoint 6 : break 35
+
+# Quando a função funcX() é chamada na linha 31, dois inteiros(arg1 e arg2) são passados como parâmetros e uma cópia desses valores serão armazenados em a e b.
+	Assim :	arg1 = 11
+			arg2 = 23
+
+	Breakpoint 1 : funcX (a=11, b=23)
+
+	Breakpoint 4 : print dos valores
+					 arg1 = 11
+				     arg2 = 23
+	Conclusão: Os valores de arg1 e arg2 não foram alterados.
+
+# Quando a função funcY() é chamada na linha 32, são passados por parâmetro um ponteiro para inteiro(que armazena o endereço de arg1) e um inteiro(arg2) que armazena uma cópia do valor em b.
+	Assim :	arg1 = 11
+			arg2 = 23
+
+	Breakpoint 2 : funcY (a=0x7fffffffddfc, b=23)
+
+	Breakpoint 5 : print dos valores
+					 arg1 = 11
+				     arg2 = 23
+	Conclusão: Os valores de arg1 e arg2 não foram alterados.
+
+# Quando a função funcZ() é chamada na linha 34, são passados por parâmetro dois inteiros(arg1 e arg2) e uma cópia desses valores serão armazenados em a e b, e um ponteiro para inteiro (que armazena o endereço de resultado).
+	Assim :	arg1 = 11
+			arg2 = 23
+			resultado = 0
+
+	Breakpoint 3 : funcZ (a=11, b=23, result=0x7fffffffde00)
+
+	Breakpoint 5 : print dos valores
+					 arg1 = 11
+				     arg2 = 23
+				     resultado = 58
+	Conclusão: O único valor que foi alterado foi o de resultado.
+						 
+
+
